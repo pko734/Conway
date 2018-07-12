@@ -22,13 +22,39 @@ public func positionSequence (from: Position, to: Position) -> PositionSequence 
         .flatMap { $0 }
 }
 
-public enum CellState {
+public enum CellState: CustomStringConvertible {
     case alive, empty, born, died
     
     public var isAlive: Bool {
         switch self {
         case .alive, .born: return true
         default: return false
+        }
+    }
+    
+    public var description: String {
+        switch self {
+        case .alive:
+            return "alive"
+        case .empty:
+            return "empty"
+        case .born:
+            return "born"
+        case .died:
+            return "died"
+        }
+    }
+    
+    static func allValues() -> [String] {
+        return ["alive", "empty", "born", "died"]
+    }
+    
+    public func toggle(value: CellState) -> CellState {
+        switch value {
+        case .alive, .born:
+            return .empty
+        case .died, .empty:
+            return .alive
         }
     }
 }

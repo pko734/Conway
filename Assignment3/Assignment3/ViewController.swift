@@ -10,6 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var gridView: GridView!
+    
+    @IBAction func clear(_ sender: Any) {
+        gridView.grid = Grid(gridView.size, gridView.size)
+    }
+    @IBAction func step(_ sender: Any) {
+        gridView.grid = gridView.grid.next()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

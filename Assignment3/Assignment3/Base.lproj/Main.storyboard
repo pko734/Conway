@@ -1,23 +1,115 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Assignment3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cU-27-Wfd" customClass="GridView" customModule="Assignment3" customModuleProvider="target">
+                                <rect key="frame" x="20.666666666666657" y="181.66666666666666" width="372.66666666666674" height="372.66666666666674"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9cU-27-Wfd" secondAttribute="height" multiplier="1:1" id="WuV-YC-NM0"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="size">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
+                                        <color key="value" red="0.23137254901960785" green="0.9137254901960784" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
+                                        <color key="value" red="0.26135361194610596" green="0.92567986249923706" blue="0.24509575963020325" alpha="0.59952910958904104" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                        <color key="value" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
+                                        <color key="value" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="0.60308754280821919" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gridColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gridWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16r-Si-Yqb">
+                                <rect key="frame" x="191" y="561.66666666666663" width="32" height="30"/>
+                                <state key="normal" title="Step"/>
+                                <connections>
+                                    <action selector="step:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ajq-WD-pf5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpM-m2-ATb">
+                                <rect key="frame" x="189" y="144.66666666666666" width="36" height="30"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZhE-92-8sD"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9cU-27-Wfd" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.9" id="5wj-LN-Afu"/>
+                            <constraint firstItem="9cU-27-Wfd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6Mr-eh-sGh"/>
+                            <constraint firstItem="hpM-m2-ATb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jcv-MX-cSk"/>
+                            <constraint firstItem="9cU-27-Wfd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PAE-S9-FAN"/>
+                            <constraint firstItem="9cU-27-Wfd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="Pra-ba-UYz"/>
+                            <constraint firstItem="16r-Si-Yqb" firstAttribute="leading" secondItem="9cU-27-Wfd" secondAttribute="trailing" constant="7" id="YtJ-i8-ryj"/>
+                            <constraint firstItem="16r-Si-Yqb" firstAttribute="top" secondItem="9cU-27-Wfd" secondAttribute="bottom" constant="7.5" id="fWt-ia-HsK"/>
+                            <constraint firstItem="9cU-27-Wfd" firstAttribute="leading" secondItem="hpM-m2-ATb" secondAttribute="trailing" constant="7" id="h2l-NK-GgQ"/>
+                            <constraint firstItem="9cU-27-Wfd" firstAttribute="top" secondItem="hpM-m2-ATb" secondAttribute="bottom" constant="7" id="h6D-hz-RBf"/>
+                            <constraint firstItem="hpM-m2-ATb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jbf-EB-Ksr"/>
+                            <constraint firstItem="16r-Si-Yqb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t3G-Mg-HYE"/>
+                            <constraint firstItem="16r-Si-Yqb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="x22-gi-iCT"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5wj-LN-Afu"/>
+                                <exclude reference="h2l-NK-GgQ"/>
+                                <exclude reference="jbf-EB-Ksr"/>
+                                <exclude reference="YtJ-i8-ryj"/>
+                                <exclude reference="x22-gi-iCT"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="5wj-LN-Afu"/>
+                                <exclude reference="Pra-ba-UYz"/>
+                                <include reference="h2l-NK-GgQ"/>
+                                <exclude reference="h6D-hz-RBf"/>
+                                <exclude reference="Jcv-MX-cSk"/>
+                                <include reference="jbf-EB-Ksr"/>
+                                <include reference="YtJ-i8-ryj"/>
+                                <exclude reference="fWt-ia-HsK"/>
+                                <exclude reference="t3G-Mg-HYE"/>
+                                <include reference="x22-gi-iCT"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="gridView" destination="9cU-27-Wfd" id="Ypk-ow-rs0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
