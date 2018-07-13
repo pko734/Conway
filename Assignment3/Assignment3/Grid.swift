@@ -39,13 +39,8 @@ public enum CellState: String, CustomStringConvertible {
         }
     }
     
-    static func allValues() -> [String] {
-        return [
-            self.alive.rawValue,
-            self.born.rawValue,
-            self.empty.rawValue,
-            self.died.rawValue
-        ]
+    static func allValues() -> [CellState] {
+        return [self.alive, self.born, self.empty, self.died]
     }
     
     public func toggle(value: CellState) -> CellState {

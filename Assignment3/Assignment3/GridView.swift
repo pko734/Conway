@@ -100,17 +100,6 @@ import UIKit
             color.setFill()
             path.fill()
         }
-        
-        // Some text
-        //        let string = "CSCI S65-G"
-        //        let stringSize = string.size(withAttributes: attributes)
-        //        let textRect = CGRect(
-        //            x: rect.origin.x + (rect.width - stringSize.width) / 2,
-        //            y: rect.origin.y + (rect.height - stringSize.height) / 2,
-        //            width: stringSize.width,
-        //            height: stringSize.height
-        //        )
-        //        string.draw(in: textRect, withAttributes: attributes )
     }
     func convert(touch: UITouch) -> Position? {
         let touchY = touch.location(in: self).y - (gridWidth/2.0)
