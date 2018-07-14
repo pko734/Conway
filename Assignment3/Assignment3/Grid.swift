@@ -43,8 +43,8 @@ public enum CellState: String, CustomStringConvertible {
         return [self.alive, self.born, self.empty, self.died]
     }
     
-    public func toggle(value: CellState) -> CellState {
-        switch value {
+    public func toggle() -> CellState {
+        switch self {
         case .alive, .born:
             return .empty
         case .died, .empty:

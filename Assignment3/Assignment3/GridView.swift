@@ -120,8 +120,7 @@ import UIKit
         guard touches.count == 1 else { return }
         let touch = touches.first!
         guard let pos = convert(touch: touch) else { return }
-        let state = grid[pos]
-        grid[pos] = grid[pos].toggle(value: state)
+        grid[pos] = grid[pos].toggle()
         lastPosition = pos
         setNeedsDisplay()
     }
@@ -131,8 +130,7 @@ import UIKit
         let touch = touches.first!
         guard let pos = convert(touch: touch) else { return }
         guard pos.row != lastPosition?.row || pos.col != lastPosition?.col else { return }
-        let state = grid[pos]
-        grid[pos] = grid[pos].toggle(value: state)
+        grid[pos] = grid[pos].toggle()
         lastPosition = pos
         setNeedsDisplay()
     }
