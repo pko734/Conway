@@ -43,6 +43,10 @@ public enum CellState: String, CustomStringConvertible {
         return [self.alive, self.born, self.empty, self.died]
     }
     
+    // NOTE:
+    // I believe the version here to be more appropriate than the strict guidlines of the assignment.
+    // For a version of toggle() that takes a CellState parameter rather than operate based on "self",
+    // see the commit: 7a90b8b94936c88647f62d2608e392182d55ed71
     public func toggle() -> CellState {
         switch self {
         case .alive, .born:
