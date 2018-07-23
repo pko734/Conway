@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		761F4A7721018C1500B1FB11 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761F4A7621018C1500B1FB11 /* StatisticsViewController.swift */; };
+		761FD6F021050CD90070545B /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FD6EF21050CD90070545B /* GridView.swift */; };
+		761FD6F221050DDD0070545B /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FD6F121050DDD0070545B /* Grid.swift */; };
 		FBBB59461EE5F99000AEFA16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB59451EE5F99000AEFA16 /* AppDelegate.swift */; };
 		FBBB59481EE5F99000AEFA16 /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB59471EE5F99000AEFA16 /* InstrumentationViewController.swift */; };
 		FBBB594A1EE5F99000AEFA16 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB59491EE5F99000AEFA16 /* SimulationViewController.swift */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		761F4A7621018C1500B1FB11 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		761FD6EF21050CD90070545B /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridView.swift; path = ../../Assignment3/Assignment3/GridView.swift; sourceTree = "<group>"; };
+		761FD6F121050DDD0070545B /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = ../../Assignment3/Assignment3/Grid.swift; sourceTree = "<group>"; };
 		FBBB59421EE5F99000AEFA16 /* Assignment4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBBB59451EE5F99000AEFA16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBBB59471EE5F99000AEFA16 /* InstrumentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentationViewController.swift; sourceTree = "<group>"; };
@@ -59,7 +63,9 @@
 			isa = PBXGroup;
 			children = (
 				FBBB59451EE5F99000AEFA16 /* AppDelegate.swift */,
+				761FD6EF21050CD90070545B /* GridView.swift */,
 				FBBB59471EE5F99000AEFA16 /* InstrumentationViewController.swift */,
+				761FD6F121050DDD0070545B /* Grid.swift */,
 				FBBB59491EE5F99000AEFA16 /* SimulationViewController.swift */,
 				FBBB594B1EE5F99000AEFA16 /* Main.storyboard */,
 				761F4A7621018C1500B1FB11 /* StatisticsViewController.swift */,
@@ -97,7 +103,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Harvard University";
 				TargetAttributes = {
 					FBBB59411EE5F99000AEFA16 = {
@@ -146,7 +152,9 @@
 				FBBB594A1EE5F99000AEFA16 /* SimulationViewController.swift in Sources */,
 				FBBB59461EE5F99000AEFA16 /* AppDelegate.swift in Sources */,
 				FBBB59481EE5F99000AEFA16 /* InstrumentationViewController.swift in Sources */,
+				761FD6F021050CD90070545B /* GridView.swift in Sources */,
 				761F4A7721018C1500B1FB11 /* StatisticsViewController.swift in Sources */,
+				761FD6F221050DDD0070545B /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,15 +190,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -233,15 +249,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

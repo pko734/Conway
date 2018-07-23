@@ -10,6 +10,16 @@ import UIKit
 
 class InstrumentationViewController: UIViewController {
 
+    @IBOutlet weak var sizeText: UITextField!
+    
+    @IBOutlet weak var sizeStepper: UIStepper!
+    
+    @IBOutlet weak var periodText: UITextField!
+    
+    @IBOutlet weak var refreshSlider: UISlider!
+    
+    @IBOutlet weak var refreshOn: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +29,30 @@ class InstrumentationViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    @IBAction func switchPushed(_ sender: UISwitch) {
+        if sender.isOn {
+            StandardEngine.sharedInstance.refreshRate = Double(refreshSlider.value)
+        } else {
+            StandardEngine.sharedInstance.refreshRate = 0
+        }
+    }
+    
+    @IBAction func sliderSlid(_ sender: UISlider) {
+        if !refreshOn.isOn { return }
+        let interval = Double(sender.value)
+        if StandardEngine.sharedInstance.refreshRate != interval {
+            StandardEngine.sharedInstance.refreshRate = interval
+        }
+        periodText.text = String(format: "%.1f", interval)
+    }
+    
+    @IBAction func stepperPushed(_ sender: UIStepper) {
+        let value = Int(sender.value)
+        StandardEngine.sharedInstance.rows = value
+        StandardEngine.sharedInstance.cols = value
+        StandardEngine.sharedInstance.grid = Grid(value, value)
+        sizeText.text = "\(value)"
+    }
+    
 }
 
