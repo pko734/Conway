@@ -38,10 +38,11 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func sliderSlid(_ sender: UISlider) {
-        if !refreshOn.isOn { return }
         let interval = Double(sender.value)
-        if StandardEngine.sharedInstance.refreshRate != interval {
-            StandardEngine.sharedInstance.refreshRate = interval
+        if refreshOn.isOn {
+            if StandardEngine.sharedInstance.refreshRate != interval {
+                StandardEngine.sharedInstance.refreshRate = interval
+            }
         }
         periodText.text = String(format: "%.1f", interval)
     }
@@ -53,6 +54,7 @@ class InstrumentationViewController: UIViewController {
         StandardEngine.sharedInstance.grid = Grid(value, value)
         sizeText.text = "\(value)"
     }
+
     
 }
 

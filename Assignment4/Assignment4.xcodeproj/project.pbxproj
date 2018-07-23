@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		761F4A7721018C1500B1FB11 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761F4A7621018C1500B1FB11 /* StatisticsViewController.swift */; };
-		761FD6F021050CD90070545B /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FD6EF21050CD90070545B /* GridView.swift */; };
-		761FD6F221050DDD0070545B /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761FD6F121050DDD0070545B /* Grid.swift */; };
+		76A7F627210577FC00A3F13F /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A7F626210577FC00A3F13F /* Grid.swift */; };
+		76A7F6292105780C00A3F13F /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A7F6282105780C00A3F13F /* GridView.swift */; };
 		FBBB59461EE5F99000AEFA16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB59451EE5F99000AEFA16 /* AppDelegate.swift */; };
 		FBBB59481EE5F99000AEFA16 /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB59471EE5F99000AEFA16 /* InstrumentationViewController.swift */; };
 		FBBB594A1EE5F99000AEFA16 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB59491EE5F99000AEFA16 /* SimulationViewController.swift */; };
@@ -20,8 +20,8 @@
 
 /* Begin PBXFileReference section */
 		761F4A7621018C1500B1FB11 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
-		761FD6EF21050CD90070545B /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridView.swift; path = ../../Assignment3/Assignment3/GridView.swift; sourceTree = "<group>"; };
-		761FD6F121050DDD0070545B /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = ../../Assignment3/Assignment3/Grid.swift; sourceTree = "<group>"; };
+		76A7F626210577FC00A3F13F /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		76A7F6282105780C00A3F13F /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		FBBB59421EE5F99000AEFA16 /* Assignment4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBBB59451EE5F99000AEFA16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBBB59471EE5F99000AEFA16 /* InstrumentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentationViewController.swift; sourceTree = "<group>"; };
@@ -63,15 +63,15 @@
 			isa = PBXGroup;
 			children = (
 				FBBB59451EE5F99000AEFA16 /* AppDelegate.swift */,
-				761FD6EF21050CD90070545B /* GridView.swift */,
 				FBBB59471EE5F99000AEFA16 /* InstrumentationViewController.swift */,
-				761FD6F121050DDD0070545B /* Grid.swift */,
 				FBBB59491EE5F99000AEFA16 /* SimulationViewController.swift */,
 				FBBB594B1EE5F99000AEFA16 /* Main.storyboard */,
 				761F4A7621018C1500B1FB11 /* StatisticsViewController.swift */,
 				FBBB594E1EE5F99000AEFA16 /* Assets.xcassets */,
 				FBBB59501EE5F99000AEFA16 /* LaunchScreen.storyboard */,
 				FBBB59531EE5F99000AEFA16 /* Info.plist */,
+				76A7F626210577FC00A3F13F /* Grid.swift */,
+				76A7F6282105780C00A3F13F /* GridView.swift */,
 			);
 			path = Assignment4;
 			sourceTree = "<group>";
@@ -152,9 +152,9 @@
 				FBBB594A1EE5F99000AEFA16 /* SimulationViewController.swift in Sources */,
 				FBBB59461EE5F99000AEFA16 /* AppDelegate.swift in Sources */,
 				FBBB59481EE5F99000AEFA16 /* InstrumentationViewController.swift in Sources */,
-				761FD6F021050CD90070545B /* GridView.swift in Sources */,
+				76A7F627210577FC00A3F13F /* Grid.swift in Sources */,
+				76A7F6292105780C00A3F13F /* GridView.swift in Sources */,
 				761F4A7721018C1500B1FB11 /* StatisticsViewController.swift in Sources */,
-				761FD6F221050DDD0070545B /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
