@@ -22,6 +22,7 @@ protocol EngineProtocol {
 
 class StandardEngine: EngineProtocol {
     var delegate: EngineDelegate?
+    var size: Int = 10
     
     var grid: Grid {
         didSet {
