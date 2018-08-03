@@ -1,6 +1,51 @@
 //
 //  Grid.swift
 //
+import Foundation
+
+let EngineNoticationName = Notification.Name(rawValue: "EngineUpdate")
+
+protocol EngineDelegate {
+    func engine(didUpdate: Engine) -> Void
+}
+
+class Engine {
+    static var sharedInstance: Engine = Engine()
+    
+    var size: Int = 10
+    var grid: Grid = Grid(10,10) {
+        didSet {
+            delegate?.engine(didUpdate: self)
+            let nc = NotificationCenter.default
+            let info = ["engine": self]
+            nc.post(name: EngineNoticationName, object: nil, userInfo:info)
+        }
+    }
+    private var timer: Timer?
+    
+    var delegate: EngineDelegate?
+    
+    var interval: Double = 0 {
+        didSet {
+            timer?.invalidate()
+            timer = nil
+            if interval > 0 {
+                timer = Timer.scheduledTimer(
+                    withTimeInterval: interval,
+                    repeats: true
+                ) { (t: Timer) -> Void in
+                    self.grid = self.grid.next()
+                    //self.updateClosure(self)
+                    self.delegate?.engine(didUpdate: self)
+                    //                    let nc = NotificationCenter.default
+                    //                    let info = ["engine": self]
+                    //                    nc.post(name: EngineNoticationName, object: nil, userInfo:info)
+                }
+            }
+        }
+    }
+}
+
 public typealias GridPosition = (row: Int, col: Int)
 public typealias GridPositionSequence = [GridPosition]
 public typealias GridSize = (rows: Int, cols: Int)
@@ -92,7 +137,7 @@ public struct Grid: GridProtocol {
 }
 
 extension Grid: Sequence {
-    fileprivate var living: [GridPosition] {
+    var living: [GridPosition] {
         return lazyPositions(self.size).filter { return  self[$0.row, $0.col].isAlive   }
     }
     

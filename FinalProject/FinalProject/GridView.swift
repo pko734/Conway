@@ -20,14 +20,15 @@ protocol GridViewDataSource {
     @IBInspectable var bornColor: UIColor = .green
     @IBInspectable var diedColor: UIColor = .green
     @IBInspectable var emptyColor: UIColor = .black
-    @IBInspectable var size: Int = 10 {
-        didSet {
-            dataSource?.size = size
-        }
-    }
+    @IBInspectable var size: Int = 10
+//        {
+//        didSet {
+//            dataSource?.size = size
+//        }
+//    }
     
-    @IBInspectable var inset = CGFloat(2.0)
-    @IBInspectable var lineWidth: CGFloat = 2.0
+    @IBInspectable var inset = CGFloat(0.0)
+    @IBInspectable var lineWidth: CGFloat = 0.5
     
     var dataSource: GridViewDataSource?
     

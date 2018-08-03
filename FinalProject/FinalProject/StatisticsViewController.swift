@@ -8,11 +8,16 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class StatisticsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(engine(notified:)), name: EngineNoticationName, object: nil)
+    }
+    
+    @objc func engine(notified: Notification) {
+        
     }
 
     override func didReceiveMemoryWarning() {
