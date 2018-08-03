@@ -30,6 +30,14 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         super.viewDidLoad()
         gridView.dataSource = self
         Engine.sharedInstance.delegate = self
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(engine(notified:)), name: GridEditorDisplayedNotification, object: nil)
+    }
+    
+    @objc func engine(notified: Notification) {
+        guard let userinfo = notified.userInfo, let engine = userinfo["engine"] as? Engine else { return }
+        Engine.sharedInstance.size = engine.size
+        Engine.sharedInstance.grid = engine.grid
     }
 
     override func didReceiveMemoryWarning() {

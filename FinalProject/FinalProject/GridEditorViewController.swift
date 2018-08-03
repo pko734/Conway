@@ -10,6 +10,8 @@ import UIKit
 
 typealias GridEditorUpdateClosure = (Configuration) -> Void
 
+let GridEditorDisplayedNotification = Notification.Name(rawValue: "GridEditorDisplayed")
+
 class GridEditorViewController: UIViewController, GridViewDataSource, EngineDelegate {
     var configuration: Configuration!
     var updateClosure: GridEditorUpdateClosure?
@@ -37,6 +39,17 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         super.viewDidLoad()
         gridView.dataSource = self
         engine.delegate = self
+        initializeConfiguration()
+        publishConfiguration()
+    }
+
+    func publishConfiguration() {
+        let nc = NotificationCenter.default
+        let info = ["engine": engine]
+        nc.post(name: GridEditorDisplayedNotification, object: nil, userInfo:info)
+    }
+    
+    func initializeConfiguration() {
         nameTextField.text = configuration?.title
         let maxSize = (configuration?.contents?.flatMap { $0 }.reduce(Int.min) { max($0, $1) }) ?? 10
         engine.size = maxSize * 2
@@ -54,7 +67,6 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
     @IBAction func save(_ sender: UIButton) {
         guard let newTitle = nameTextField.text else { return }
         let newConfig = Configuration(title: newTitle, contents: getActiveGridPositions())
-        let tmp = getActiveGridPositions()
         updateClosure?(newConfig)
     }
     
