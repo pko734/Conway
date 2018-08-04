@@ -8,6 +8,9 @@
 
 import UIKit
 
+var restoredConfig: Configuration?
+var restoredGridSize: Int?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,10 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let defaults = UserDefaults.standard
-        if let defaults = defaults.object(forKey: "simulationConfiguration") as? Data,
-            let recovered = String(data: defaults, encoding: .utf8) {
-            //            let weatherData = Parser<WeatherData>(string: recovered).parse()
-            //            print(weatherData.description)
+        if let configData = defaults.object(forKey: "simulationConfiguration") as? Data,
+           let gridSize = defaults.object(forKey: "gridSize") as? Int {
+            
+            do {
+                restoredConfig = try JSONDecoder().decode(Configuration.self, from: configData)
+                restoredGridSize = gridSize
+            } catch {
+                print("Failed to parse saved data")
+            }
         }
         return true
     }

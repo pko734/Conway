@@ -43,6 +43,16 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         configNameText.delegate = self
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(engine(notified:)), name: GridEditorPublishNotification, object: nil)
+        if let gridSize = restoredGridSize, let config = restoredConfig {
+            Engine.sharedInstance.size = gridSize
+            var grid = Grid(gridSize, gridSize)
+            config.contents?.forEach {
+                grid[$0[0], $0[1]] = .alive
+            }
+            Engine.sharedInstance.grid = grid
+            configNameText.text = config.title
+            gridView.setNeedsDisplay()
+        }
     }
     
     @objc func engine(notified: Notification) {
@@ -73,6 +83,7 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         let recode = try! JSONEncoder().encode(configuration)
         let defaults = UserDefaults.standard
         defaults.set(recode, forKey: "simulationConfiguration")
+        defaults.set(Engine.sharedInstance.size, forKey: "gridSize")
         let nc = NotificationCenter.default
         let info = ["configuration": configuration]
         nc.post(name: SimulationSavedNotification, object: nil, userInfo: info)

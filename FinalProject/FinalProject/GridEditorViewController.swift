@@ -68,7 +68,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
     }
     @IBAction func deleteBtn(_ sender: UIButton) {
         deleteClosure?()
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func publishBtn(_ sender: UIBarButtonItem) {
@@ -76,7 +76,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         let newConfig = Configuration(title: newTitle, contents: getActiveGridPositions())
         updateClosure?(newConfig)
         publishConfiguration()
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     func getActiveGridPositions() -> [[Int]]? {
