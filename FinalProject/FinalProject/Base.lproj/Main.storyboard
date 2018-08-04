@@ -40,6 +40,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgq-5r-vdC">
+                                <rect key="frame" x="171" y="429" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Step"/>
+                                <connections>
+                                    <action selector="step:" destination="9pv-A4-QxB" eventType="touchUpInside" id="1sP-L7-h9M"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -140,9 +148,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Configurations" id="Ps7-i0-Hgv"/>
+                    <navigationItem key="navigationItem" title="Configurations" id="Ps7-i0-Hgv">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="Ice-XL-eee"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aC5-Oa-MxB">
+                            <connections>
+                                <action selector="addConfig:" destination="80v-Ry-ZFb" id="D3P-Zh-HVz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="onSwitch" destination="NLv-cy-sHg" id="rwX-GF-6UD"/>
+                        <outlet property="sizeStepper" destination="KE5-6g-onr" id="dS6-bP-2Lt"/>
                         <outlet property="sizeText" destination="gtN-yT-G5I" id="Rwb-YK-5eN"/>
                         <outlet property="speedSlider" destination="NV1-3w-uvq" id="b7C-ah-FeK"/>
                         <outlet property="speedText" destination="oil-2r-Xgg" id="61L-ZF-VYE"/>
@@ -200,14 +216,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEi-6l-Sgz">
-                                <rect key="frame" x="156" y="364" width="38" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="save:" destination="pym-bA-YVC" eventType="touchUpInside" id="2et-aO-O5R"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wHo-qM-sbt">
                                 <rect key="frame" x="110" y="59" width="184" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -222,9 +230,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJM-3e-02e">
+                                <rect key="frame" x="151" y="364" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteBtn:" destination="pym-bA-YVC" eventType="touchUpInside" id="QJI-EN-hYh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <navigationItem key="navigationItem" id="NIv-In-f4c">
+                        <barButtonItem key="rightBarButtonItem" title="Publish" id="WOU-nb-UAd">
+                            <connections>
+                                <action selector="publishBtn:" destination="pym-bA-YVC" id="QfK-Aw-3XX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="gridView" destination="rPN-kV-eSs" id="vWz-Um-T4e"/>
                         <outlet property="nameTextField" destination="wHo-qM-sbt" id="BYU-mx-JlP"/>

@@ -8,17 +8,26 @@
 
 import UIKit
 
+let AddConfigNotificationName = Notification.Name(rawValue: "AddConfig")
+
 class InstrumentationViewController: UIViewController {
 
     @IBOutlet weak var sizeText: UITextField!
     @IBOutlet weak var speedText: UITextField!
     @IBOutlet weak var onSwitch: UISwitch!
     @IBOutlet weak var speedSlider: UISlider!
+    @IBOutlet weak var sizeStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    @IBAction func addConfig(_ sender: UIBarButtonItem) {
+        let nc = NotificationCenter.default
+        let info = ["size": Int(sizeStepper.value)]
+        nc.post(name: AddConfigNotificationName, object: nil, userInfo:info)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

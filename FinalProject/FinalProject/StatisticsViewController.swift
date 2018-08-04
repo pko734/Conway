@@ -17,7 +17,8 @@ class StatisticsViewController: UIViewController {
     }
     
     @objc func engine(notified: Notification) {
-        
+        guard let userinfo = notified.userInfo, let engine = userinfo["engine"] as? Engine else { return }
+
     }
 
     override func didReceiveMemoryWarning() {

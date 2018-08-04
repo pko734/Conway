@@ -9,12 +9,14 @@
 import UIKit
 
 typealias GridEditorUpdateClosure = (Configuration) -> Void
+typealias GridEditorDeleteClosure = () -> Void
 
 let GridEditorDisplayedNotification = Notification.Name(rawValue: "GridEditorDisplayed")
 
 class GridEditorViewController: UIViewController, GridViewDataSource, EngineDelegate {
     var configuration: Configuration!
     var updateClosure: GridEditorUpdateClosure?
+    var deleteClosure: GridEditorDeleteClosure?
     var engine: Engine = Engine()
     
     @IBOutlet weak var gridView: GridView!
@@ -40,7 +42,6 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         gridView.dataSource = self
         engine.delegate = self
         initializeConfiguration()
-        publishConfiguration()
     }
 
     func publishConfiguration() {
@@ -63,11 +64,17 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func deleteBtn(_ sender: UIButton) {
+        deleteClosure?()
+        dismiss(animated: true, completion: nil)
+    }
     
-    @IBAction func save(_ sender: UIButton) {
+    @IBAction func publishBtn(_ sender: UIBarButtonItem) {
         guard let newTitle = nameTextField.text else { return }
         let newConfig = Configuration(title: newTitle, contents: getActiveGridPositions())
         updateClosure?(newConfig)
+        publishConfiguration()
+        dismiss(animated: true, completion: nil)
     }
     
     func getActiveGridPositions() -> [[Int]]? {

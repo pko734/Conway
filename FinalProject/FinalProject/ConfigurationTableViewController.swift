@@ -16,7 +16,9 @@ class ConfigurationTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-        
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(addConfig(notified:)), name: AddConfigNotificationName, object: nil)
+    
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -24,6 +26,13 @@ class ConfigurationTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    @objc func addConfig(notified: Notification) {
+        //guard let userinfo = notified.userInfo, let size = userinfo["size"] as? Int else { return }
+        let configuration = Configuration(title: "[new config]", contents: nil)
+        configurations.append(configuration)
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -117,6 +126,10 @@ class ConfigurationTableViewController: UITableViewController {
         destination.configuration = configurations[indexPath.row]
         destination.updateClosure = { (configuration) in
             self.configurations[indexPath.row] = configuration
+            self.tableView.reloadData()
+        }
+        destination.deleteClosure = { () in
+            self.configurations.remove(at: indexPath.row);
             self.tableView.reloadData()
         }
     }

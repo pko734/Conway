@@ -44,6 +44,12 @@ class Engine {
             }
         }
     }
+    
+    func step() -> Grid {
+        grid = grid.next()
+        return grid
+    }
+
 }
 
 public typealias GridPosition = (row: Int, col: Int)
