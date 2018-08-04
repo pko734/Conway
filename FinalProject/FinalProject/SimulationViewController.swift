@@ -70,6 +70,9 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         }
         
         let configuration = Configuration(title: configNameText.text, contents: getActiveGridPositions())
+        let recode = try! JSONEncoder().encode(configuration)
+        let defaults = UserDefaults.standard
+        defaults.set(recode, forKey: "simulationConfiguration")
         let nc = NotificationCenter.default
         let info = ["configuration": configuration]
         nc.post(name: SimulationSavedNotification, object: nil, userInfo: info)

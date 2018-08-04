@@ -74,7 +74,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Simulation" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Simulation" image="Simulation" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" title="Title" id="VY9-mr-yz4">
                         <barButtonItem key="leftBarButtonItem" title="Reset" id="xgM-WL-OmK"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="fm8-cX-rQ9"/>
@@ -92,7 +92,7 @@
         <scene sceneID="dUQ-QN-fXn">
             <objects>
                 <navigationController id="sO2-v3-DSW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Configurations" id="zas-DX-76K"/>
+                    <tabBarItem key="tabBarItem" title="Configurations" image="Configurations" id="zas-DX-76K"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MkC-Qj-0NU">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -364,7 +364,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96614167180533839" green="1" blue="0.71016549376634908" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Statistics" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="Statistics" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="alive" destination="8Vu-Fn-71o" id="Pzs-iF-7y4"/>
                         <outlet property="born" destination="HZe-Cb-lWA" id="o7Y-Yh-Yft"/>
@@ -398,7 +398,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="Configurations" width="30" height="30"/>
+        <image name="Simulation" width="30" height="30"/>
+        <image name="Statistics" width="30" height="30"/>
     </resources>
 </document>

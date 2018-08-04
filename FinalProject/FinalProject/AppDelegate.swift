@@ -15,7 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        let defaults = UserDefaults.standard
+        if let defaults = defaults.object(forKey: "simulationConfiguration") as? Data,
+            let recovered = String(data: defaults, encoding: .utf8) {
+            //            let weatherData = Parser<WeatherData>(string: recovered).parse()
+            //            print(weatherData.description)
+        }
         return true
     }
 
