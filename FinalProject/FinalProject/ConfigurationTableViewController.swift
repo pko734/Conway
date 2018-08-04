@@ -17,7 +17,6 @@ class ConfigurationTableViewController: UITableViewController {
         super.viewDidLoad()
         fetchData()
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(addConfig(notified:)), name: AddConfigNotificationName, object: nil)
         nc.addObserver(self, selector: #selector(saveConfig(notified:)), name: SimulationSavedNotification, object: nil)
 
         // Uncomment the following line to preserve selection between presentations
@@ -34,8 +33,7 @@ class ConfigurationTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
-    @objc func addConfig(notified: Notification) {
-        //guard let userinfo = notified.userInfo, let size = userinfo["size"] as? Int else { return }
+    @IBAction func addConfig(_ sender: UIBarButtonItem) {
         let configuration = Configuration(title: "[new config]", contents: nil)
         configurations.append(configuration)
         self.tableView.reloadData()

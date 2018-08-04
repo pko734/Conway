@@ -8,8 +8,6 @@
 
 import UIKit
 
-let AddConfigNotificationName = Notification.Name(rawValue: "AddConfig")
-
 class InstrumentationViewController: UIViewController {
 
     @IBOutlet weak var sizeText: UITextField!
@@ -22,12 +20,6 @@ class InstrumentationViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    @IBAction func addConfig(_ sender: UIBarButtonItem) {
-        let nc = NotificationCenter.default
-        let info = ["size": Int(sizeStepper.value)]
-        nc.post(name: AddConfigNotificationName, object: nil, userInfo:info)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

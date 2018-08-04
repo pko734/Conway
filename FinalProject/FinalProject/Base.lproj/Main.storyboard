@@ -233,13 +233,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rdr-sb-78u"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Configurations" id="Ps7-i0-Hgv">
+                    <navigationItem key="navigationItem" id="Ps7-i0-Hgv">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Ice-XL-eee"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aC5-Oa-MxB">
-                            <connections>
-                                <action selector="addConfig:" destination="80v-Ry-ZFb" id="D3P-Zh-HVz"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="onSwitch" destination="NLv-cy-sHg" id="rwX-GF-6UD"/>
@@ -261,9 +256,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="yeH-OS-lFf">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Configurations" id="zE4-bm-Aeg">
+                                    <barButtonItem key="rightBarButtonItem" systemItem="add" id="byO-KK-OrX">
+                                        <connections>
+                                            <action selector="addConfig:" destination="MOQ-Nz-Gvx" id="Jk9-aa-dqD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Configuration" id="H5B-zb-VuD">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H5B-zb-VuD" id="oh0-XY-twb">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
