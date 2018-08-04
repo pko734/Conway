@@ -9,6 +9,7 @@
 import UIKit
 
 let SimulationSavedNotification = Notification.Name(rawValue: "SimulationSavedDisplayed")
+let SimResetNotificationName = Notification.Name(rawValue: "SimulationReset")
 
 class SimulationViewController: UIViewController, GridViewDataSource, EngineDelegate, UITextFieldDelegate {
     @IBOutlet weak var gridView: GridView!
@@ -29,13 +30,17 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         set { Engine.sharedInstance.grid[pos.row, pos.col] = newValue }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configNameText.text = ""
+        configNameText.placeholder = "Give me a name!"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         gridView.dataSource = self
         Engine.sharedInstance.delegate = self
         configNameText.delegate = self
-        configNameText.text = ""
-        configNameText.placeholder = "Give me a name!"
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(engine(notified:)), name: GridEditorPublishNotification, object: nil)
     }
@@ -52,6 +57,8 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     
     @IBAction func reset(_ sender: UIButton) {
         Engine.sharedInstance.grid = Grid(Engine.sharedInstance.size, Engine.sharedInstance.size)
+        let nc = NotificationCenter.default
+        nc.post(name: SimResetNotificationName, object: nil, userInfo: nil)
     }
     
     @IBAction func save(_ sender: UIButton) {

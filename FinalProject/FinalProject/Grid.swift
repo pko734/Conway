@@ -136,13 +136,17 @@ public struct Grid: GridProtocol {
         size = GridSize(rows, cols)
         lazyPositions(self.size).forEach { self[$0.row, $0.col] = cellInitializer($0) }
     }
+    public var alive : [GridPosition] { return lazyPositions(self.size).filter { return  self[$0.row, $0.col] == .alive } }
+    public var born  : [GridPosition] { return lazyPositions(self.size).filter { return  self[$0.row, $0.col] == .born  } }
+    public var died  : [GridPosition] { return lazyPositions(self.size).filter { return  self[$0.row, $0.col] == .died  } }
+    public var empty : [GridPosition] { return lazyPositions(self.size).filter { return  self[$0.row, $0.col] == .empty } }
 }
 
 extension Grid: Sequence {
     var living: [GridPosition] {
         return lazyPositions(self.size).filter { return  self[$0.row, $0.col].isAlive   }
     }
-    
+
     public struct GridIterator: IteratorProtocol {
         private class GridHistory: Equatable {
             let positions: [GridPosition]

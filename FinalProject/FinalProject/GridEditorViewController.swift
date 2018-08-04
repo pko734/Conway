@@ -20,8 +20,8 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
     var engine: Engine = Engine()
     
     @IBOutlet weak var gridView: GridView!
-    @IBOutlet weak var nameTextField: UITextField!
- 
+    @IBOutlet weak var nameText: UITextField!
+    
     var size:Int {
         get { return engine.size }
         set { engine.size = newValue }
@@ -41,7 +41,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         super.viewDidLoad()
         gridView.dataSource = self
         engine.delegate = self
-        nameTextField.delegate = self
+        nameText.delegate = self
         initializeConfiguration()
     }
 
@@ -52,13 +52,14 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
     }
     
     func initializeConfiguration() {
-        nameTextField.text = configuration?.title
+        nameText.text = configuration?.title
         let maxSize = (configuration?.contents?.flatMap { $0 }.reduce(0) { max($0, $1) }) ?? 5
         engine.size = max(10, maxSize * 2)
-        engine.grid = Grid(engine.size, engine.size)
+        var grid = Grid(engine.size, engine.size)
         configuration?.contents?.forEach {
-            engine.grid[$0[0], $0[1]] = .alive
+            grid[$0[0], $0[1]] = .alive
         }
+        engine.grid = grid
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,7 +72,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
     }
     
     @IBAction func publishBtn(_ sender: UIBarButtonItem) {
-        guard let newTitle = nameTextField.text else { return }
+        guard let newTitle = nameText.text else { return }
         let newConfig = Configuration(title: newTitle, contents: getActiveGridPositions())
         updateClosure?(newConfig)
         publishConfiguration()
