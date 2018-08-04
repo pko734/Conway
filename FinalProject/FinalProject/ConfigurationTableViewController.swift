@@ -18,12 +18,20 @@ class ConfigurationTableViewController: UITableViewController {
         fetchData()
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(addConfig(notified:)), name: AddConfigNotificationName, object: nil)
-    
+        nc.addObserver(self, selector: #selector(saveConfig(notified:)), name: SimulationSavedNotification, object: nil)
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @objc func saveConfig(notified: Notification) {
+        guard let userinfo = notified.userInfo, let config = userinfo["configuration"] as? Configuration else { return }
+        let configuration = Configuration(title: config.title, contents: config.contents)
+        configurations.append(configuration)
+        self.tableView.reloadData()
     }
 
     @objc func addConfig(notified: Notification) {

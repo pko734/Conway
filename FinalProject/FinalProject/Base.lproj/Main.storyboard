@@ -48,17 +48,45 @@
                                     <action selector="step:" destination="9pv-A4-QxB" eventType="touchUpInside" id="1sP-L7-h9M"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="configuration name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ly-qn-u9b" userLabel="Config Name">
+                                <rect key="frame" x="44" y="96" width="287" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ety-ST-biN">
+                                <rect key="frame" x="48" y="429" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="reset:" destination="9pv-A4-QxB" eventType="touchUpInside" id="VEx-2X-4LL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hZ-ow-9Pb">
+                                <rect key="frame" x="291" y="429" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="save:" destination="9pv-A4-QxB" eventType="touchUpInside" id="bg5-dS-gFN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Simulation" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="Title" id="VY9-mr-yz4">
+                        <barButtonItem key="leftBarButtonItem" title="Reset" id="xgM-WL-OmK"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="fm8-cX-rQ9"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="configNameText" destination="6Ly-qn-u9b" id="pSL-uv-8Xp"/>
                         <outlet property="gridView" destination="bNk-Hx-6hl" id="5h5-fu-Cza"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="785" y="319"/>
+            <point key="canvasLocation" x="784.79999999999995" y="318.89055472263868"/>
         </scene>
         <!--Configurations-->
         <scene sceneID="dUQ-QN-fXn">

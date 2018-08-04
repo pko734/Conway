@@ -35,11 +35,7 @@ class Engine {
                     repeats: true
                 ) { (t: Timer) -> Void in
                     self.grid = self.grid.next()
-                    //self.updateClosure(self)
                     self.delegate?.engine(didUpdate: self)
-                    //                    let nc = NotificationCenter.default
-                    //                    let info = ["engine": self]
-                    //                    nc.post(name: EngineNoticationName, object: nil, userInfo:info)
                 }
             }
         }

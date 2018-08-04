@@ -8,8 +8,11 @@
 
 import UIKit
 
-class SimulationViewController: UIViewController, GridViewDataSource, EngineDelegate {
+let SimulationSavedNotification = Notification.Name(rawValue: "SimulationSavedDisplayed")
+
+class SimulationViewController: UIViewController, GridViewDataSource, EngineDelegate, UITextFieldDelegate {
     @IBOutlet weak var gridView: GridView!
+    @IBOutlet weak var configNameText: UITextField!
     
     func engine(didUpdate: Engine) {
         gridView.size = didUpdate.size
@@ -30,8 +33,11 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         super.viewDidLoad()
         gridView.dataSource = self
         Engine.sharedInstance.delegate = self
+        configNameText.delegate = self
+        configNameText.text = ""
+        configNameText.placeholder = "Give me a name!"
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(engine(notified:)), name: GridEditorDisplayedNotification, object: nil)
+        nc.addObserver(self, selector: #selector(engine(notified:)), name: GridEditorPublishNotification, object: nil)
     }
     
     @objc func engine(notified: Notification) {
@@ -41,14 +47,42 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     }
 
     @IBAction func step(_ sender: UIButton) {
-        Engine.sharedInstance.step()
+        _ = Engine.sharedInstance.step()
+    }
+    
+    @IBAction func reset(_ sender: UIButton) {
+        Engine.sharedInstance.grid = Grid(Engine.sharedInstance.size, Engine.sharedInstance.size)
+    }
+    
+    @IBAction func save(_ sender: UIButton) {
+        if configNameText.text!.isEmpty {
+            let alert = UIAlertController(title: "Alert", message: "Please supply a name", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            return
+        }
+        
+        let configuration = Configuration(title: configNameText.text, contents: getActiveGridPositions())
+        let nc = NotificationCenter.default
+        let info = ["configuration": configuration]
+        nc.post(name: SimulationSavedNotification, object: nil, userInfo: info)
+    }
+    
+    func getActiveGridPositions() -> [[Int]]? {
+        return Engine.sharedInstance.grid.living.map {
+            [$0.row, $0.col]
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
 }
 

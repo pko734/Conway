@@ -11,9 +11,9 @@ import UIKit
 typealias GridEditorUpdateClosure = (Configuration) -> Void
 typealias GridEditorDeleteClosure = () -> Void
 
-let GridEditorDisplayedNotification = Notification.Name(rawValue: "GridEditorDisplayed")
+let GridEditorPublishNotification = Notification.Name(rawValue: "GridEditorPublish")
 
-class GridEditorViewController: UIViewController, GridViewDataSource, EngineDelegate {
+class GridEditorViewController: UIViewController, GridViewDataSource, EngineDelegate, UITextFieldDelegate {
     var configuration: Configuration!
     var updateClosure: GridEditorUpdateClosure?
     var deleteClosure: GridEditorDeleteClosure?
@@ -41,20 +41,21 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         super.viewDidLoad()
         gridView.dataSource = self
         engine.delegate = self
+        nameTextField.delegate = self
         initializeConfiguration()
     }
 
     func publishConfiguration() {
         let nc = NotificationCenter.default
         let info = ["engine": engine]
-        nc.post(name: GridEditorDisplayedNotification, object: nil, userInfo:info)
+        nc.post(name: GridEditorPublishNotification, object: nil, userInfo:info)
     }
     
     func initializeConfiguration() {
         nameTextField.text = configuration?.title
-        let maxSize = (configuration?.contents?.flatMap { $0 }.reduce(Int.min) { max($0, $1) }) ?? 10
-        engine.size = maxSize * 2
-        engine.grid = Grid(maxSize * 2, maxSize * 2)
+        let maxSize = (configuration?.contents?.flatMap { $0 }.reduce(0) { max($0, $1) }) ?? 5
+        engine.size = max(10, maxSize * 2)
+        engine.grid = Grid(engine.size, engine.size)
         configuration?.contents?.forEach {
             engine.grid[$0[0], $0[1]] = .alive
         }
@@ -82,7 +83,12 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
             [$0.row, $0.col]
         }
     }
-    
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
     /*
     // MARK: - Navigation
 
