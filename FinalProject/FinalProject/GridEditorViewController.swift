@@ -54,7 +54,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
     func initializeConfiguration() {
         nameText.text = configuration?.title
         let maxSize = (configuration?.contents?.flatMap { $0 }.reduce(0) { max($0, $1) }) ?? 5
-        engine.size = max(10, maxSize * 2)
+        engine.size = Int(max(10, Double(maxSize) * 1.5))
         var grid = Grid(engine.size, engine.size)
         configuration?.contents?.forEach {
             grid[$0[0], $0[1]] = .alive
